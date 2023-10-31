@@ -1,0 +1,1034 @@
+<html>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <form>
+                <div class="display">
+                    <input type="text" name="display" disabled>
+                </div>
+                <div>
+                    <input type="button" value="AC" onclick="display.value =''" class="ac">
+                    <input type="button" class="del" value="Del" onclick="display.value =display.value.toString().slice (0,-1)">
+                    <input type="button" class="symbols" value="." onclick="display.value +='.'">
+                    <input type="button" class="symbols" value="/" onclick="display.value +='/'">
+                </div>
+                <div>
+                    <input type="button" class="NumpadBtns" value="7" onclick="display.value +='7'">
+                    <input type="button" class="NumpadBtns" value="8" onclick="display.value +='8'">
+                    <input type="button" class="NumpadBtns" value="9" onclick="display.value +='9'">
+                    <input type="button" class="symbols" value="*" onclick="display.value +='*'">
+                </div>
+                <div>
+                    <input type="button" class="NumpadBtns" value="4" onclick="display.value +='4'">
+                    <input type="button" class="NumpadBtns" value="5" onclick="display.value +='5'">
+                    <input type="button" class="NumpadBtns" value="6" onclick="display.value +='6'">
+                    <input type="button" class="symbols" value="-" onclick="display.value +='-'">
+                </div>
+                <div>
+                    <input type="button" class="NumpadBtns" value="1" onclick="display.value +='1'">
+                    <input type="button" class="NumpadBtns" value="2" onclick="display.value +='2'">
+                    <input type="button" class="NumpadBtns" value="3" onclick="display.value +='3'">
+                    <input type="button" class="symbols" value="+" onclick="display.value +='+'">
+                </div>
+                <div>
+                    <input type="button" class="special" value="00" onclick="display.value +='00'">
+                    <input type="button" class="special" value="0" onclick="display.value += '0'">
+                    <input type="button" value="=" onclick="display.value = eval(display.value)" class="equal">
+                </div>
+            </form>
+        </div>
+    </div>
+We have created the basic structure of our calculator using HTML and JavaScript now its time to add styling
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+*{
+    margin: 0px;
+    padding:0px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    user-select: none;
+}
+body{
+    height:100vh;
+    Background: #240046;
+    display:grid;
+}
+.container{
+    width: 100%;
+    
+    height: 100%;
+
+    display: flex;
+}
+.calculator{
+    background: #023e7d;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.219);
+    margin:auto;
+
+    border-radius: 10px;
+}
+
+.calculator form input {
+    border: 0;
+    outline: 0;
+    width: 60px;
+    height:60px;
+    border-radius: 10px;
+    font-family: Nunito;
+    font-weight: 700;
+    font-size:1.7em;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+
+}
+.calculator form input.NumpadBtns{
+    background: #012a4a;
+}
+form .display{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+form .display input{
+    text-align: right;
+    flex: 2;
+    font-size: 45px;
+    box-shadow: none;
+    padding:20px;
+    box-sizing: border-box;
+    background: #218380; 
+    box-shadow: 0 0 10px 3px #00000033;
+    height:80px;
+    color: white;
+}
+
+form input.equal{
+width: 145px;
+background: #005f08
+}
+form input.ac,form input.del{
+    background: #5f0000
+}
+
+.symbols{
+    background-color: #edae49;
+}
+.special{
+    background: #248277;
+}
+
+.calculator form input:hover {
+    box-shadow: 0px 0px 5px 3px #00000025;
+}
+Result:
+
+
+2. Sliding Puzzles:
+You can make awesome Sliding puzzles by using HTML CSS and JavaScript. In this, the player rearranges the tile or pieces to empty spaces to make the specific pattern or arrangement. It's quite interesting.
+
+For Example:
+
+First, we will create the basic structure of the puzzle and the styling
+
+  <button class="Refresh" onclick="location.reload()"><svg width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg></button>
+<div class="conatiner">
+    <div class="tile" onclick="MoveMe(0)">1</div>
+    <div class="tile" onclick="MoveMe(1)">2</div>
+    <div class="tile" onclick="MoveMe(2)">3</div>
+    <div class="tile" onclick="MoveMe(3)">4</div>
+    <div class="tile" onclick="MoveMe(4)">5</div>
+    <div class="tile" onclick="MoveMe(5)">6</div>
+    <div class="tile" onclick="MoveMe(6)">7</div>
+    <div class="tile" onclick="MoveMe(7)">8</div>
+    <div class="emtile"></div>
+</div>
+<div class="blscreen">
+    <div class="winScreen">
+        <img src="https://images.unsplash.com/photo-1679931974847-bbb01236fe88?crop=entropy&cs=srgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODIwNDg5Mzc&ixlib=rb-4.0.3&q=85" alt="">
+        <div class="WinMessage">
+            <h2>You Won The Match</h2>
+            <div class="StarGroup"><svg viewBox="0 0 576 512" width="90" title="star">
+                <path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" />
+                
+              </svg>
+              <svg viewBox="0 0 576 512" width="90" title="star">
+                <path  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" />
+              </svg>
+              <svg  viewBox="0 0 576 512" width="90" title="star">
+                <path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" />
+              </svg></div>
+            Moves: <i class="MovesCount"></i>
+            <div class="buttonGroup"><button onclick="location.reload()">Play Again!</button></div>
+        </div>
+    </div>
+</div>
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
+
+*{
+    padding:0;
+    margin:0;
+}
+body{
+    height:100vh;
+    background-color: #212529;
+    display:flex;
+
+}
+.Refresh{
+    position: absolute;
+    padding:10px;
+    border-radius: 50%;
+    cursor:pointer;
+    margin:20px;
+}
+.conatiner{
+width:450px;
+margin:auto;
+height:450px;
+
+background-size:cover;
+display:grid;
+grid-template-columns: 150px 150px 150px;
+grid-template-rows: 150px 150px 150px;
+
+
+}
+.tile{
+background: url(https://images.unsplash.com/photo-1573152565405-f24a2b508023?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1931&q=80);
+font-weight:900;
+font-family: 'Bruno Ace', cursive;
+font-size:2em;
+background-size:450px 450px;
+margin:3px;
+padding:15px;
+border-radius: 5px;
+transition-duration: 0.5s;
+-webkit-text-stroke:0.001px white;
+}
+.tile:nth-child(1){background-position: 0px 0px}
+.tile:nth-child(2){background-position: -150px 0px}
+.tile:nth-child(3){background-position: -300px -0px}
+.tile:nth-child(4){background-position: 0px -150px}
+.tile:nth-child(5){background-position: -150px -150px}
+.tile:nth-child(6){background-position: -300px -150px}
+.tile:nth-child(7){background-position: 0px -300px}
+.tile:nth-child(8){background-position: -150px -300px}
+.blscreen{
+    position: fixed;
+    width:100vw;
+    height:100vh;
+    display:none;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    
+}
+.winScreen{
+width:600px;
+height:300px;
+margin:auto;
+background-color: #ced4da;
+border-radius:10px;
+display:flex;
+font-family: sans-serif;
+box-shadow: 1px 1px 10px 5px rgba(0, 0, 0,0.5);
+
+
+}
+.winScreen>img{
+width:300px;
+height:300px;
+border-radius: 10px;
+
+}
+.WinMessage{
+    width:300px;
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+    font-size: 1.1em;
+
+}
+h2{
+    text-align:center;
+    padding:5px;
+}
+.buttonGroup{
+ 
+    margin:auto;
+}
+.buttonGroup>button{
+    padding:5px 20px;
+    border-radius:20px;
+    margin:10px;
+    font-size: 1.1em;
+    background-color: #40916c;
+    font-weight: bolder;
+    color:white;
+    font-family: 'Bruno Ace';
+
+    cursor:pointer;
+}
+now for the functionality we will use JavaScript
+
+var MovesCount=0
+function randomPos(){
+    var arr = [];
+    while(arr.length < 9){
+        var r = ((Math.floor(Math.random() * 3)+1).toString())+((Math.floor(Math.random() * 3)+1).toString());
+        if(arr.indexOf(r) === -1) arr.push(r);
+    }
+    return arr
+}
+
+var RandomPos=randomPos()
+
+for(let i =0;i<document.getElementsByClassName("tile").length;i++){
+    document.getElementsByClassName("tile")[i].style.gridArea=RandomPos[i][0]+"/"+RandomPos[i][1]
+}
+function MoveMe(tile){
+    var EmptyTile=document.querySelector(".emtile")
+    var Possibilties=[
+        parseInt(RandomPos[tile][0])+1==parseInt(RandomPos[8][0])&&parseInt(RandomPos[tile][1])==parseInt(RandomPos[8][1]),
+        parseInt(RandomPos[tile][0])-1==parseInt(RandomPos[8][0])&&parseInt(RandomPos[tile][1])==parseInt(RandomPos[8][1]),
+        parseInt(RandomPos[tile][1])+1==parseInt(RandomPos[8][1])&&parseInt(RandomPos[tile][0])==parseInt(RandomPos[8][0]),
+        parseInt(RandomPos[tile][1])-1==parseInt(RandomPos[8][1])&&parseInt(RandomPos[tile][0])==parseInt(RandomPos[8][0]),
+    ]
+if(Possibilties[0]||Possibilties[1]||Possibilties[2]||Possibilties[3]){
+    MovesCount++;
+    EmptyTile.style.gridArea=RandomPos[tile][0]+"/"+RandomPos[tile][1];
+    document.querySelectorAll(".tile")[tile].style.gridArea=RandomPos[8][0]+"/"+RandomPos[8][1];
+
+    var CurrentTile=RandomPos[tile]
+    RandomPos[tile]=RandomPos[8]
+    RandomPos[8]=CurrentTile;
+    NeededPos=["11","12","13","21","22","23","31","32","33"]
+    if(RandomPos.join(".")==NeededPos.join(".")){
+        console.log("Game Beated");
+        document.querySelector(".blscreen").style.display='flex'
+        document.querySelector(".MovesCount").innerHTML=MovesCount;
+        var stars=0;
+        if(MovesCount<100){
+            stars=3
+        }else if(MovesCount<200){
+            stars=2
+        }else if(MovesCount<300){
+            stars=1
+        }else{
+            stars=0
+        }
+        for(let i=0;i<2;i++){
+            document.getElementsByTagName("path").style.fill="yellow"
+        }
+    }
+}
+}
+Result:
+
+
+3. Awesome interactive Buttons:
+You can create awesome interactive buttons using HTML, CSS, and JavaScript. You can add different stylings, animation hover effects, and interactions of your own choice to make your buttons more outstanding.
+
+    <button class="animateFromCenter">Click Me!</button>
+    <button class="animateFromLeft">Click Me!</button>
+    <button class="animateFromRight">Click Me!</button>
+We have created the button now we will add some styling to the button:
+
+*{
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+body{
+    display:grid;
+    place-items: center;
+    grid-template-columns: 33% 33% 33%;
+    height:100vh;
+    background-color: rgb(27, 28, 30);
+}
+button{
+    display: grid;
+    
+    padding:10px 20px;
+    cursor:pointer;
+    background-color: transparent;
+    border:1px solid rgb(51, 51, 60);
+    border-radius: 20px;
+    color:white;
+    overflow: hidden;
+    font-family: monospace;
+    font-size: 1.2rem;
+    z-index: 1;
+    font-weight: bold;
+    position: relative;
+}
+
+button:hover{
+    background-color: rgb(51, 51, 60);
+}
+button:after{
+    content:'';
+    place-self: center;
+    width:0px;
+    background-color: rgb(19, 18, 21);
+    z-index: -1;
+    height:0px;
+    border-radius: 50%;
+    position: absolute;
+    transition: 0.3s;
+}
+button:active::after{
+    width:200px;
+    height:200px;
+}
+
+
+
+.animateFromRight::after{
+    right:-200px;
+    width:200px;
+    height:200px;
+}
+.animateFromRight:active::after{
+    right:0px;
+}
+.animateFromLeft::after{
+    width:200px;
+    height:200px;
+    left:-200px;
+}
+.animateFromLeft:active::after{
+    left:0px;
+}
+Result:
+
+
+4. Digital Clock:
+You can also create a digital clock using HTML, CSS, and JavaScript. It's a really simple thing you can create. It's amazing and simple thing you can create.
+
+For Example:
+
+    <div class="Time-container">
+        <div class="digit">
+            <li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li>
+        </div>
+        <div class="digit">
+            <li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li>
+        </div>
+        <div class="colon">:</div>
+        <div class="digit">
+            <li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li>
+        </div><div class="digit">
+            <li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li>
+        </div>
+        <div class="colon">:</div>
+        <div class="digit">
+            <li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li>
+        </div><div class="digit"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li>
+        </div>
+        <div class="digit">
+            <li>AM</li>
+            <li>PM</li>
+        </div>
+    </div>
+</div>
+Now we will do styling and give functionality to our digital clock.
+
+*{
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+body{
+    display:grid;
+    place-items: center;
+    height:100vh;
+    background-color: rgb(27, 28, 30);
+}
+button{
+    display: grid;
+    
+    padding:10px 20px;
+    cursor:pointer;
+    background-color: transparent;
+    border:1px solid rgb(51, 51, 60);
+    border-radius: 20px;
+    color:white;
+    overflow: hidden;
+    font-family: monospace;
+    font-size: 1.2rem;
+    z-index: 1;
+    font-weight: bold;
+    position: relative;
+}
+
+button:hover{
+    background-color: rgb(51, 51, 60);
+}
+button:after{
+    content:'';
+    place-self: center;
+    width:0px;
+    background-color: rgb(19, 18, 21);
+    z-index: -1;
+    height:0px;
+    border-radius: 50%;
+    position: absolute;
+    transition: 0.3s;
+}
+button:active::after{
+    width:200px;
+    height:200px;
+}
+
+
+
+.animateFromRight::after{
+    right:-200px;
+    width:200px;
+    height:200px;
+}
+.animateFromRight:active::after{
+    right:0px;
+}
+.animateFromLeft::after{
+    width:200px;
+    height:200px;
+    left:-200px;
+}
+.animateFromLeft:active::after{
+    left:0px;
+}
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+body{
+    display:grid;
+    place-items: center;
+    height:100vh;
+    background-color: rgb(27, 28, 30);
+}
+.Time-container{
+    width:auto;
+    height:50px;
+    padding:5px;
+    display:flex;
+    overflow: hidden;
+    background-color: #1e1f22;
+    border-radius: 5px;
+    color:white;
+    font-size: 30px;
+    font-family: sans-serif;
+}
+.Time-container li{
+list-style-type: none;
+height: 100%;
+display: grid;
+place-items: center;
+padding:0px 10px;
+transition-duration: 0.3s;
+}
+.Time-container .colon{
+    font-size: 30px;
+    display: grid;
+    place-items:center;
+    font-weight: 800;
+}
+.digit li{
+    position: relative;
+}
+setInterval(function(){
+    var Time=new Date()
+    var hour=Time.getHours()
+    var minutes=Time.getMinutes()
+    var seconds=Time.getSeconds()
+    var amOrpm=0;
+    if(hour>12){
+        hour=Time.getHours()-12
+        amOrpm=1
+    }
+    if(hour<10){hour="0"+hour}
+    if(minutes<10){minutes="0"+minutes}
+    if(seconds<10){seconds="0"+seconds}
+    
+    var Time=[hour,minutes,seconds,amOrpm]
+    
+    var digitDivs=Array.from(document.querySelectorAll(".digit"))
+    var digitDivs=digitDivs.slice(0,digitDivs.length)
+    
+    var Time=Time.join("").split("")
+    for(let i in Time){
+    
+        Array.from(digitDivs[i].querySelectorAll("li")).forEach((e)=>{e.style.top=-(parseInt(Time[i])*50)+"px"})
+    }
+    },100)
+Result:
+
+
+5. Registration form:
+While Trolling over google you often face some websites which ask you to register yourselves on their website. Do you ever wondered how these registration forms are created? You can create them by using simple HTML, CSS, and JavaScript.
+
+For Example:
+
+<form class="container">
+        <h2 class="heading">Sign Up</h2>
+        <div class="steps-container">
+            <hr>
+            <hr class="active">
+            <div class="steps"><i class="fa-solid fa-user"></i></div>
+            <div class="steps"><i class="fa-solid fa-envelope"></i></div>
+            <div class="steps"><i class="fa-solid fa-key"></i></div>
+            <div class="steps"><i class="fa-solid fa-trophy"></i></div>
+        </div>
+        
+        <div class="input-slide-contianer">
+            <scroller>
+                <div class="input-slide">
+                <h3>User Name</h3>
+                <p><i>Username is your online identity</i></p>
+                <ul class="rules">
+
+                    <li>Your username should only contain letters, numbers, underscores or hyphens. </li><li>No spaces or special characters allowed.</li>
+                    <li>Your username should not be offensive or contain profanity.</li>
+                </ul>
+                <input type="text" placeholder="Type your username Here" name="username" class="username">
+                <div class="full-name"><input type="text" placeholder="First Name" name="firstname">
+                    <input type="text" name="lastname" class="lastname" placeholder="Last Name"></div>
+                <button class="button-nex" onclick="NextSlide(1)">Next</button>
+            </div>
+            <div class="input-slide user-detail">
+                <h3>Email</h3>
+                <p><i>Email is the gateway to your digital life</i></p>
+                <ul class="rules">
+                    <li>Please enter valid email in the format "example@example.com".</li>
+                    <li>we value your privacy and will never use your email for any unauthorized purposes.</li>
+                    <li>Please don't use email that belong to someone else.</li>
+                    <li>Please don't use email that includes personal information.</li>
+                </ul>
+                <input type="email" name="email" class="email" placeholder="Email">
+ 
+                
+                <button class="button-nex" onclick="NextSlide(2)">Next</button>
+            </div>
+            <div class="input-slide password-slide">
+                <h3>Password</h3>
+                <p><i>Secure your account with a strong password</i></p>
+                <ul class="rules">
+                    <li>Include a mix of uppercase and lowercase letters, numbers, and special characters.</li>
+                    <li>Avoid using common or easily guessable passwords.</li>
+                    <li>Do not use personal information.</li>
+                </ul>
+                <input type="password" name="password" class="password" placeholder="Password">
+                <input type="password" name="confirm-password" class="confirm-password" placeholder="Confirm Your Password">
+                <button class="button-nex" onclick="NextSlide(3)">Next</button>
+            </div>
+            <div class="input-slide finish-slide">
+                <h3>Congratulations!</h3>
+                <p><i>You have completed all the steps required for registration.</i></p>
+                <ul class="rules">
+                <li>Before submitting your information, please take a moment to ensure that all the details provided are correct. </li>
+                <li> We take the privacy and security of our users very seriously, and it is important that all the information provided is accurate and up-to-date.</li> 
+                <li>Once you have confirmed that everything is in order, simply click the 'Submit' button.</li>
+                </ul> 
+              
+                <button type="submit" class="button-nex" disabled>Sumbit</button>
+            </div>
+        </scroller> 
+        </div>
+      <button class="GoBack" onclick="GoBack()"><i class="fa-solid fa-arrow-left"></i></button> 
+    </form>
+Now we will do styling and will give functionality to our form:
+
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height:100vh;
+    background-color: #343a40;
+    display: flex;
+}
+.container{
+    width:500px;
+    height:500px;
+    margin:auto;
+    border-radius: 5px;
+    border:1px solid #ced4da;
+    font-family: Exo;
+    color:white;
+    background-color: #212529;
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.heading{
+    padding:20px;
+    font-weight: 900;
+    text-align: center;
+    font-size: 2em;
+}
+.steps-container{
+    position: relative;
+    display: flex;
+    height: 50px;;
+    margin:10px;
+    width:calc(100% - 20px)
+}
+.steps-container>hr{
+    width:100%;
+    height:5px;
+    background-color: white;
+    border-radius: 20px;
+    margin-top:25px;
+    position: absolute;
+    z-index:0;
+    border:none;    
+}
+
+
+.steps-container>.active{
+    background:#80ed99;
+    width:0%;
+}
+.steps-container>.steps{
+    width:45px;
+    height:45px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    color:#212529;
+    font-size: 1.4em;
+    display: flex;
+    border:5px solid #212529;
+    margin:auto;
+    position: relative;
+    box-sizing: content-box;
+    z-index: 1;
+    overflow: hidden;
+    
+}
+.steps-container>.steps::after{
+    content:'';
+    position: absolute;
+    width:0%;
+    height: 45px;
+    background-color: #80ed99;
+    border-radius: 50%;
+    z-index: 2;
+}
+.steps-container>.steps>i{
+    margin:auto;
+    z-index: 3;
+}
+
+.input-slide-contianer{
+    width: 100%;
+    flex:1;
+    display:flex;
+    overflow: hidden;
+}
+scroller{
+    width:fit-content;
+    display: flex;
+    margin-left:0px;
+    transition-duration: 0.5s;
+}
+.input-slide-contianer>scroller>.input-slide{
+    width:478px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+.input-slide>h3{
+    text-align: center;
+}
+.input-slide>.rules{
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    padding-left:20px;
+    
+}
+.input-slide>.rules>li{
+padding:5px 0;
+}
+
+.input-slide input{
+    width:calc(100% - 20px);
+    padding:10px;
+    background-color: #6c757d;
+    outline:none;
+    border-radius:10px;
+    border:none;
+    /* box-shadow:1px 1px 15px 0.5px rgba(0, 0, 0, 0.5); */
+    margin:auto 10px;
+    font-size: 1.01em;
+    color:white;
+    box-sizing: border-box;
+    transition-duration: 0.3s;
+    position: relative;
+
+}
+.input-slide input::placeholder{
+color:white !important;
+font-size: 1.01em;
+}
+.input-slide input:focus{
+    border: 1px solid lime;
+}
+
+.button-nex{
+    padding:8px 20px;
+    border-radius: 20px;
+    color:white;
+    font-weight: 800;
+    outline:none;
+    border:none;
+    margin:auto;
+    margin-right:10px;
+    font-family:Exo;
+    font-size: 1em;
+    cursor:pointer;
+    background-color: #52b788;
+}
+.button-nex:hover{
+    background-color: #40916c;
+}
+.full-name{
+    display: flex;
+}
+.user-detail>input{
+    align-items: start;
+    margin:10px;
+}
+.user-detail>button{
+    margin:10px;
+    margin-left:auto;
+}
+
+
+.user-detail>.email{
+    width:calc(100% - 20px)
+    }
+
+.input-slide p{
+    font-size: 0.8em;
+    text-align: center;
+    
+}
+.finish-slide{
+    line-height:1.4em
+}
+:root{
+    --BarStartWidth:0%;
+    --BarEndWidth:calc(var(--BarStartWidth) + 25%);
+}
+.animateStep{
+    width:var(--BarEndWidth);
+    background-color: black;
+    animation: ZerotoHeroWidth 0.5s ease;
+    
+}
+.PassedStep::after{
+  
+    width:100% !important;
+    transition: 1s;
+
+}
+
+.GoBack{
+    width:fit-content;
+    padding:0px 10px;
+    font-size: 1.5em;
+    font-weight: 900;
+    position: absolute;
+    border-radius: 5px;
+    background-color: transparent;
+    border:none;
+    color:white;
+    cursor:pointer;
+    left:-50px;
+}
+.GoBack:hover{
+    background-color: #40916c;
+}
+@keyframes ZerotoHeroWidth{
+    0%{
+        width:0%;
+    }
+    100%{
+        width:100%
+    }
+}
+@keyframes GoBackBtnVisible {
+    0%{
+        left:-50px;
+    }
+    100%{
+        left:10px;
+    }
+}
+@keyframes GoBackBtnInvisible {
+    0%{
+        left:10px;
+    }
+    100%{
+        left:-50px;
+    }
+}
+var GlobalSlideNo;
+function NextSlide(SlideNo){
+GlobalSlideNo=SlideNo
+    event.preventDefault()
+    if(SlideNo==1){
+        document.querySelector(".GoBack").style.animation="GoBackBtnVisible 0.25s ease"
+        document.querySelector(".GoBack").onanimationend=function(){
+            this.style.animation=""
+            this.style.left="10px"
+        }
+    }
+    
+    console.log(parseInt(window.getComputedStyle(document.querySelector("scroller")).getPropertyValue("margin-left"))-478);
+    document.querySelector("scroller").style.marginLeft=parseInt(window.getComputedStyle(document.querySelector("scroller")).getPropertyValue("margin-left"))-478+"px";
+    MoveIndicationBar(SlideNo)
+    }
+IndicatorObj={
+    startVal:0,
+    EndVal:25,
+    currentWidth:0
+}
+function MoveIndicationBar(i){
+    
+    var step=document.querySelectorAll(".steps")[i-1]
+    IndicatorObj.StepNo=i
+    console.log(step)
+    IndicatorObj.EndVal=i*25
+    ZerotoHeroWidth()
+    
+    
+}
+function ZerotoHeroWidth(){
+    var bar=document.querySelector(".active")
+    var step=document.querySelectorAll(".steps")[IndicatorObj.StepNo-1]
+    barStyle=parseInt(window.getComputedStyle(bar).width)
+    if(IndicatorObj.currentWidth>IndicatorObj.EndVal/2){
+        step.classList.add("PassedStep")
+        
+    }
+    if(IndicatorObj.currentWidth<IndicatorObj.EndVal){
+        IndicatorObj.currentWidth+=1
+        bar.style.width=IndicatorObj.currentWidth+"%"
+        window.requestAnimationFrame(ZerotoHeroWidth)
+    }
+    
+}
+function GoBack(){
+    event.preventDefault()
+    console.log(GlobalSlideNo)
+    if(GlobalSlideNo<2){
+        document.querySelector(".GoBack").style.animation="GoBackBtnInvisible 0.25s ease"
+        document.querySelector(".GoBack").onanimationend=function(){
+            this.style.animation=""
+            this.style.left="-50px"
+        }
+    }
+    GlobalSlideNo-=1
+    console.log(parseInt(window.getComputedStyle(document.querySelector("scroller")).getPropertyValue("margin-left"))+478);
+    document.querySelector("scroller").style.marginLeft=parseInt(window.getComputedStyle(document.querySelector("scroller")).getPropertyValue("margin-left"))+478+"px";
+    document.querySelector(".GoBack").onclick=function(){
+        event.preventDefault()
+    }
+    setTimeout(function(){
+        document.querySelector(".GoBack").onclick=GoBack
+    },500)
+    MoveIndicationBarMinus(GlobalSlideNo)
+    
+    }
+
+
+
+    IndicatorObj={
+        startVal:25,
+        EndVal:0,
+        currentWidth:0
+    }
+    function MoveIndicationBarMinus(i){
+
+        IndicatorObj.StepNo=i
+    
+        IndicatorObj.EndVal=i*25
+        HerotoZeroWidth()
+        console.log(IndicatorObj)
+        
+    }
+    function HerotoZeroWidth(){
+        var bar=document.querySelector(".active")
+        var step=document.querySelectorAll(".steps")[IndicatorObj.StepNo-1]
+        barStyle=parseInt(window.getComputedStyle(bar).width)
+        if(IndicatorObj.currentWidth>IndicatorObj.EndVal){
+            IndicatorObj.currentWidth-=1
+            bar.style.width=IndicatorObj.currentWidth+"%"
+            window.requestAnimationFrame(HerotoZeroWidth)
+        }
+        
+    }
+Result:
+
+
+💡 If you find yourself needing to use these for your other projects, consider encapsulating their logic into their own components and using a tool like Bit to test, version, publish and then reuse across multiple projects with a simple bit import your.username/your-component command.
+
+Learn more:
+Extracting and Reusing Pre-existing Components using bit add
+Our goal in this Guide is to learn how to free components from the monolithic jail. We will use Bit to track a…
+bit.dev
+
+At last, HTML, CSS, and JavaScript are the basic languages. Every beginner should learn as they are easy to learn and provides the base of other programming languages. and to test your knowledge after learning them you can take these ideas like projects to test your coding knowledge.
+
+Thank you and happy coding!
+
+Reference:
+Muzammal Ahmed on CodePen
+Edit description
+codepen.io
+
+Note: Some of the ideas given in this article are taken from a user over code pen while some are created by myself.
+
+Build Apps with reusable components, just like Lego
+
+Bit’s open-source tool help 250,000+ devs to build apps with components.
+
+Turn any UI, feature, or page into a reusable component — and share it across your applications. It’s easier to collaborate and build faster.
+
+→ Learn more
+
+Split apps into components to make app development easier, and enjoy the best experience for the workflows you want:
+
+→ Micro-Frontends
+→ Design System
+→ Code-Sharing and reuse
+→ Monorepo
+Learn more:
+Creating a Developer Website with Bit components
+How I built my portfolio using independent React components.
+blog.bitsrc.io
+
+How We Build Micro Frontends
+Building micro-frontends to speed up and scale our web development process.
+blog.bitsrc.io
+
+How we Build a Component Design System
+Building a design system with components to standardize and scale our UI development process.
+blog.bitsrc.io
+
+How to reuse React compo
